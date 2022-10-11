@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+from animation import plotPlay
 
 st.set_page_config(
     layout="centered", page_icon="🌐", page_title="Big Data Bowl 2023 EDA"
@@ -45,3 +46,5 @@ play = game[game.playId == playId]
 st.dataframe(play)
 fig = px.scatter(play, x='x', y='y', title = f"{plays[playId == plays.playId].playDescription.values[0]}")
 st.plotly_chart(fig, use_container_width=True)
+
+st.plotly_chart(plotPlay(play, f"{plays[playId == plays.playId].playDescription.values[0]}"), use_container_width=True)
